@@ -456,10 +456,6 @@ main {
 .social-item .social-link:hover { color: var(--light-gray); }
 
 
-.highlight-author {
-  font-weight: 700; /* más pesado que bold */
-}
-
 
 /*-----------------------------------*\
   #NAVBAR
@@ -820,7 +816,7 @@ main {
   line-height: 1.6;
 }
 
-.timeline-item::before {
+.timeline-item:not(:last-child)::before {
   content: "";
   position: absolute;
   top: -25px;
@@ -828,11 +824,6 @@ main {
   width: 1px;
   height: calc(100% + 50px);
   background: var(--jet);
-}
-
-.timeline-item:last-child::before {
-  left: -40px;
-  height:30px;
 }
 
 .timeline-item::after {
@@ -862,6 +853,10 @@ main {
 
 .pub-link:hover {
   text-decoration: underline;
+}
+
+.highlight-author {
+  font-weight: 700;
 }
 
 
