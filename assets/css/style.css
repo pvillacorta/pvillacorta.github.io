@@ -513,7 +513,10 @@ main {
 
 .about-text p { margin-bottom: 15px; }
 
-
+#ytvideo{
+  width: 100%;
+  aspect-ratio: 16 / 9;
+} 
 
 /**
  * #service 
