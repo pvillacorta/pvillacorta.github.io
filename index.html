@@ -28,6 +28,19 @@
 <body>
 
   <!--
+    - #dark mode switcher
+  -->
+  <div class="theme-switch-wrapper">
+    <!-- Switcher -->
+    <label class="theme-switch">
+      <input type="checkbox" />
+      <div class="slider round">
+        <ion-icon id="theme-switch-icon"></ion-icon>
+      </div>
+    </label>
+  </div>
+
+  <!--
     - #MAIN
   -->
 
@@ -46,7 +59,7 @@
         </figure>
 
         <div class="info-content">
-          <h1 class="name" title="Pablo Villacorta Aylagas" >Pablo<br>Villacorta-Aylagas</h1>
+          <h1 class="name" title="Pablo Villacorta Aylagas" >Pablo<br>Villacorta Aylagas</h1>
 
           <p class="title">Telecommunications Engineer</p>
         </div>
@@ -144,12 +157,20 @@
 
         </ul>
 
+        <div class="separator"></div>
+
+        <ul class="social-list cv-download">
+          <li>
+            <button class="download-cv-item" onclick=generatePDF() data-download-btn>
+              <ion-icon name="document-outline"></ion-icon>
+              <span>Download CV</span>
+            </button>
+          </li>
+        </ul>
+
       </div>
 
     </aside>
-
-
-
 
 
     <!--
@@ -190,10 +211,6 @@
 
       </nav>
 
-
-
-
-
       <!--
         - #ABOUT
       -->
@@ -206,12 +223,12 @@
 
         <section class="about-text">
           <p>
-            I'm Telecommunications Engineer, interested in all its areas, from signal processing to programming and telematics, including disciplines such as electronics and instrumentation.
+            I am a Telecommunications Engineer interested in all its areas, from signal processing to programming and telematics, including disciplines such as electronics and instrumentation.
             I am also passionate about Magnetic Resonance Imaging (MRI), a field that brings together the best of each discipline and offers room for innovation to improve people's health. 
           </p>
 
           <p>
-            Currently, I'm working as a researcher in the Image Processing Lab (LPI) at Universidad de Valladolid (Spain), 
+            Currently, I am working as a researcher in the Image Processing Lab (LPI) at Universidad de Valladolid (Spain), 
             where I contribute to the <a class="pub-link" target="_blank" href="https://github.com/JuliaHealth/KomaMRI.jl">KomaMRI.jl</a> project while developing a <a class="pub-link" target="_blank" href="https://github.com/pvillacorta/WebMRISeq">web-based tool for MRI pulse sequence editing and simulation</a>.
           </p>
 
@@ -471,157 +488,156 @@
               <h4 class="h4">English - C1 Level</h4>
               <h4 class="h4 timeline-item-title">Certified with B2 First – Cambridge</h4>
 
+              <span>2022</span>
+
               <p class="timeline-text">
                 Score: 182
               </p>
-              
-              <span>2022</span>
-
             </li>
           </ol>
 
         </section>
 
       </article>
-
 
       <!--
         - #PUBLICATIONS
       -->
+      <div class="container">
+        <article class="publications" data-page="publications">
+          <header>
+            <h2 class="h2 article-title">Publications</h2>
+          </header>
 
-      <article class="publications" data-page="publications">
+          <section class="timeline">
 
-        <header>
-          <h2 class="h2 article-title">Publications</h2>
-        </header>
+            <div class="title-wrapper">
+              <div class="icon-box">
+                <ion-icon name="chatbubbles-outline"></ion-icon>
+              </div>
 
-        <section class="timeline">
-
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="chatbubbles-outline"></ion-icon>
+              <h3 class="h3">Conference Contributions</h3>
             </div>
 
-            <h3 class="h3">Conference Papers</h3>
-          </div>
+            <h4 class="h4 timeline-year">2024</h4>
 
-          <h4 class="h4 timeline-year">2024</h4>
+            <ol class="timeline-list">
 
-          <ol class="timeline-list">
+              <li class="timeline-item">
+                <h5 class="h5 timeline-item-title">Flexible Motion Models for GPU-accelerated MRI Simulations with Complex Motion and Flow using KomaMRI </h5> 
+                <span>ESMRMB 2024, Barcelona, Spain</span>
 
-            <li class="timeline-item">
-              <h5 class="h5 timeline-item-title">Flexible Motion Models for GPU-accelerated MRI Simulations with Complex Motion and Flow using KomaMRI </h5> 
-              <span>ESMRMB 2024, Barcelona, Spain</span>
+                <p class="timeline-text">
+                  <b class="highlight-author">P. Villacorta-Aylagas</b>, C. Castillo-Passi, R.M. Menchón-Lara, J. Anatol-Hernández, P. Irarrázaval, J. Sierra-Pallares, C. Alberola-López
+                </p>
 
-              <p class="timeline-text">
-                <b class="highlight-author">P. Villacorta-Aylagas</b>, C. Castillo-Passi, R.M. Menchón-Lara, J. Anatol-Hernández, P. Irarrázaval, J. Sierra-Pallares, C. Alberola-López
-              </p>
+                <p class="timeline-text-2">
+                  [<a class="pub-link" target="_blank" href="files/publications/ESMRMB2024_Abstract.pdf">Abstract</a>]
+                  [<a class="pub-link" target="_blank" href="files/publications/ESMRMB2024_Poster.pdf">Poster</a>]
+                </p>
+                
+              </li>
 
-              <p class="timeline-text-2">
-                [<a class="pub-link" target="_blank" href="files/publications/ESMRMB2024_Abstract.pdf">Abstract</a>]
-                [<a class="pub-link" target="_blank" href="files/publications/ESMRMB2024_Poster.pdf">Poster</a>]
-              </p>
-              
-            </li>
+              <li class="timeline-item">
+                <h5 class="h5 timeline-item-title">Proof of Concept for the Simulation of Diffusion Models in the Myocardium through KomaMRI</h5>
+                <span>CASEIB 2024, Sevilla, Spain</span>
 
-            <li class="timeline-item">
-              <h5 class="h5 timeline-item-title">Proof of Concept for the Simulation of Diffusion Models in the Myocardium through KomaMRI</h5>
-              <span>CASEIB 2024, Sevilla, Spain</span>
+                <p class="timeline-text">
+                  J. R. Rodríguez-Galván, <b class="highlight-author">P. Villacorta-Aylagas</b>, S. Merino-Caviedes, C. Castillo, J. Sánchez-González, D. Filgueiras-Rama, A. Tristán-Vega, P. Irarrázaval, C. Alberola-López
+                </p>
 
-              <p class="timeline-text">
-                J. R. Rodríguez-Galván, <b class="highlight-author">P. Villacorta-Aylagas</b>, S. Merino-Caviedes, C. Castillo, J. Sánchez-González, D. Filgueiras-Rama, A. Tristán-Vega, P. Irarrázaval, C. Alberola-López
-              </p>
+              </li>
 
-            </li>
+              <li class="timeline-item">
+                <h5 class="h5 timeline-item-title">New Methods for Defining Dynamic Phantoms in KomaMRI</h5>
+                <span>ISMRM Iberian Chapter 2024, Porto, Portugal</span>
 
-            <li class="timeline-item">
-              <h5 class="h5 timeline-item-title">New Methods for Defining Dynamic Phantoms in KomaMRI</h5>
-              <span>ISMRM Iberian Chapter 2024, Porto, Portugal</span>
+                <p class="timeline-text">
+                  <b class="highlight-author">P. Villacorta-Aylagas</b>, C. Castillo-Passi, R.M. Menchón-Lara, J. Anatol-Hernández, P. Irarrázaval, J. Sierra-Pallares, C. Alberola-López
+                </p>
 
-              <p class="timeline-text">
-                <b class="highlight-author">P. Villacorta-Aylagas</b>, C. Castillo-Passi, R.M. Menchón-Lara, J. Anatol-Hernández, P. Irarrázaval, J. Sierra-Pallares, C. Alberola-López
-              </p>
+              </li>
 
-            </li>
+              <li class="timeline-item">
+                <h5 class="h5 timeline-item-title">Synthetic spin trajectory generation for advanced Flow phantom in MRI simulation</h5>
+                <span>ISMRM Iberian Chapter 2024, Porto, Portugal</span>
 
-            <li class="timeline-item">
-              <h5 class="h5 timeline-item-title">Synthetic spin trajectory generation for advanced Flow phantom in MRI simulation</h5>
-              <span>ISMRM Iberian Chapter 2024, Porto, Portugal</span>
+                <p class="timeline-text">
+                  J. Anatol-Hernández, J. Sierra-Pallares, <b class="highlight-author">P. Villacorta-Aylagas</b>, C. Castillo-Passi, R.M. Menchón-Lara, P. Irarrázaval, C. Alberola-López
+                </p>
 
-              <p class="timeline-text">
-                J. Anatol-Hernández, J. Sierra-Pallares, <b class="highlight-author">P. Villacorta-Aylagas</b>, C. Castillo-Passi, R.M. Menchón-Lara, P. Irarrázaval, C. Alberola-López
-              </p>
+              </li>
 
-            </li>
+              <li class="timeline-item">
+                <h5 class="h5 timeline-item-title">A KomaMRI Phantom Extension for Integrated Dynamic Imaging</h5>
+                <span>ISMRM 2024, Singapore</span>
 
-            <li class="timeline-item">
-              <h5 class="h5 timeline-item-title">A KomaMRI Phantom Extension for Integrated Dynamic Imaging</h5>
-              <span>ISMRM 2024, Singapore</span>
+                <p class="timeline-text">
+                  <b class="highlight-author">P. Villacorta-Aylagas</b>, C. Castillo-Passi, R. M. Menchón-Lara, P. Irarrázaval, J. B. Sierra-Pallares, C. Alberola-López
+                </p>
 
-              <p class="timeline-text">
-                <b class="highlight-author">P. Villacorta-Aylagas</b>, C. Castillo-Passi, R. M. Menchón-Lara, P. Irarrázaval, J. B. Sierra-Pallares, C. Alberola-López
-              </p>
+              </li>
 
-            </li>
+            </ol>
 
-          </ol>
+            <h4 class="h4 timeline-year">2023</h4>
 
-          <h4 class="h4 timeline-year">2023</h4>
+            <ol class="timeline-list">
 
-          <ol class="timeline-list">
+              <li class="timeline-item">
+                <h5 class="h5 timeline-item-title">A Web Version of KomaMRI. Sequence Editor and Remote Execution</h5>
+                <span>ISMRM Iberian Chapter 2023, Valladolid, Spain</span>
 
-            <li class="timeline-item">
-              <h5 class="h5 timeline-item-title">A Web Version of KomaMRI. Sequence Editor and Remote Execution</h5>
-              <span>ISMRM Iberian Chapter 2023, Valladolid, Spain</span>
+                <p class="timeline-text">
+                  <b class="highlight-author">P. Villacorta-Aylagas</b>, I. Fernández-Arias, C. Castillo-Passi, P. Irarrázaval, F. Simmross-Wattenberg, M. Rodríguez Cayetano, C. Alberola-López
+                </p>
 
-              <p class="timeline-text">
-                <b class="highlight-author">P. Villacorta-Aylagas</b>, I. Fernández-Arias, C. Castillo-Passi, P. Irarrázaval, F. Simmross-Wattenberg, M. Rodríguez Cayetano, C. Alberola-López
-              </p>
+              </li>
 
-            </li>
+              <li class="timeline-item">
+                <h5 class="h5 timeline-item-title">Parallel Device-Agnostic Simulation of Magnetic Resonance Imaging Sequences</h5>
+                <span>ISMRM Iberian Chapter 2023, Valladolid, Spain</span>
 
-            <li class="timeline-item">
-              <h5 class="h5 timeline-item-title">Parallel Device-Agnostic Simulation of Magnetic Resonance Imaging Sequences</h5>
-              <span>ISMRM Iberian Chapter 2023, Valladolid, Spain</span>
+                <p class="timeline-text">
+                  I. Fernández-Arias, <b class="highlight-author">P. Villacorta-Aylagas</b>, C. Castillo-Passi, P. Irarrázaval, F. Simmross-Wattenberg, M. Rodríguez-Cayetano, C. Alberola-López
+                </p>
 
-              <p class="timeline-text">
-                I. Fernández-Arias, <b class="highlight-author">P. Villacorta-Aylagas</b>, C. Castillo-Passi, P. Irarrázaval, F. Simmross-Wattenberg, M. Rodríguez-Cayetano, C. Alberola-López
-              </p>
-
-            </li>
+              </li>
 
 
-          </ol>
+            </ol>
 
-          <h4 class="h4 timeline-year">2022</h4>
+            <h4 class="h4 timeline-year">2022</h4>
 
-          <ol class="timeline-list">
+            <ol class="timeline-list">
 
-            <li class="timeline-item">
-              <a class="h5 pub-link timeline-item-title" target="_blank" href="files/publications/CASEIB2022_LibroActas-201-204.pdf">A Cross-Plattform Editor and Simulator of Magnetic Resonance Imaging Sequences. Design and Implementation</a>
-              <span>CASEIB 2022, Valladolid, Spain</span>
+              <li class="timeline-item">
+                <a class="h5 pub-link timeline-item-title" target="_blank" href="files/publications/CASEIB2022_LibroActas-201-204.pdf">A Cross-Plattform Editor and Simulator of Magnetic Resonance Imaging Sequences. Design and Implementation</a>
+                <span>CASEIB 2022, Valladolid, Spain</span>
 
-              <p class="timeline-text">
-                <b class="highlight-author">P. Villacorta-Aylagas</b>, I. Fernández-Arias, C. Castillo-Passi, P. Irarrázaval, F. Simmross-Wattenberg, M. Rodríguez Cayetano, C. Alberola-López
-              </p>
+                <p class="timeline-text">
+                  <b class="highlight-author">P. Villacorta-Aylagas</b>, I. Fernández-Arias, C. Castillo-Passi, P. Irarrázaval, F. Simmross-Wattenberg, M. Rodríguez Cayetano, C. Alberola-López
+                </p>
 
-            </li>
+              </li>
 
-            <li class="timeline-item">
-              <a class="h5 pub-link timeline-item-title" target="_blank" href="files/publications/CASEIB2022_LibroActas-119-122.pdf">Simulación paralela multidispositivo de secuencias de imagen por resonancia magnética</a>
-              <span>CASEIB 2022, Valladolid, Spain</span>
+              <li class="timeline-item">
+                <a class="h5 pub-link timeline-item-title" target="_blank" href="files/publications/CASEIB2022_LibroActas-119-122.pdf">Simulación paralela multidispositivo de secuencias de imagen por resonancia magnética</a>
+                <span>CASEIB 2022, Valladolid, Spain</span>
 
-              <p class="timeline-text">
-                I. Fernández-Arias, <b class="highlight-author">P. Villacorta-Aylagas</b>, C. Castillo-Passi, P. Irarrázaval, F. Simmross-Wattenberg, M. Rodríguez-Cayetano, C. Alberola-López
-              </p>
+                <p class="timeline-text">
+                  I. Fernández-Arias, <b class="highlight-author">P. Villacorta-Aylagas</b>, C. Castillo-Passi, P. Irarrázaval, F. Simmross-Wattenberg, M. Rodríguez-Cayetano, C. Alberola-López
+                </p>
 
-            </li>
+              </li>
 
-          </ol>
+            </ol>
 
-        </section>
+          </section>
 
-      </article>
+        </article>
+      </div>
+      
 
 
       <!--
@@ -634,7 +650,19 @@
           <h2 class="h2 article-title">Portfolio</h2>
         </header>
 
-        <section class="projects">
+        <section class="timeline">
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="construct"></ion-icon>
+            </div>
+            <h3 class="h3">This section is still under construction!</h3>
+            <div class="icon-box">
+              <ion-icon name="construct"></ion-icon>
+            </div>
+          </div>
+        </section>
+
+        <!-- <section class="projects">
 
           <ul class="filter-list">
 
@@ -856,11 +884,9 @@
 
           </ul>
 
-        </section>
+        </section> -->
 
       </article>
-
-
 
 
       <!--
@@ -911,10 +937,6 @@
   </main>
 
 
-
-
-
-
   <!--
     - custom js link
   -->
@@ -925,6 +947,11 @@
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <!--
+    - pdf generator link
+  -->
+  <script></script>
 
 </body>
 
