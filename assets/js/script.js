@@ -218,5 +218,8 @@ if (currentTheme) { // if a theme is already set in localStorage
 
 // ----------------------- Generate Page PDF ------------------------
 function generatePDF() {
-  window.print();
+  // Uncomment this whenever the page content changes
+  // window.print();
+
+  window.open("files/cv/CV_Pablo_Villacorta_Aylagas.pdf", "_blank");
 }
