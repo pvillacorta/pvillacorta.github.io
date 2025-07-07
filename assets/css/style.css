@@ -822,6 +822,12 @@ main {
 
 .article-title { margin-bottom: 30px; }
 
+.ribbon-icon {
+  color: var(--orange-yellow-crayola);
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0; /* evita que se achique con flex */
+}
 
 /**
  * education and experience 
