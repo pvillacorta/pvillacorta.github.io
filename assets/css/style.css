@@ -2241,6 +2241,43 @@ input:checked + .slider ion-icon{
   }
 
   /**
+   * PAGE BREAKS
+   * Clone border/background on each printed page fragment so long
+   * sections (e.g. Publications) look like separate panels, not one cut card.
+   */
+  .sidebar,
+  article.about,
+  article.resume,
+  article.publications {
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+
+  article.about header,
+  article.resume header,
+  article.publications header {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .timeline .title-wrapper {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .timeline-year {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .timeline-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /**
   * NAVBAR
   */
   .navbar {
