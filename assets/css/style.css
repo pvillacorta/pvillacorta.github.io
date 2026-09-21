@@ -2070,225 +2070,374 @@ input:checked + .slider ion-icon{
 }
 
 
-@media print 
-{
+@media print {
   @page {
-    size: A3;
+    size: A4;
+    margin: 5mm;
   }
-  /**
-   * REUSED STYLE
-   */
 
-  .sidebar, article { width: auto; }
+  html,
+  body {
+    width: 100%;
+    height: auto;
+    background: #fff !important;
+    color: #111 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
 
-  /**
-   * Dark mode switcher
-   */
-  .theme-switch-wrapper { display: none; }
+  /* Hide UI / non-CV content */
+  .theme-switch-wrapper,
+  .navbar,
+  .avatar-box,
+  .info_more-btn,
+  .cv-download,
+  .service-title,
+  #ytvideo,
+  article.portfolio,
+  article.contact,
+  .timeline-text-2,
+  .ribbon-icon {
+    display: none !important;
+  }
 
-  /**
-   * MAIN
-  */
+  /* Compact type scale for one A4 page */
+  :root {
+    --fs-1: 13px;
+    --fs-2: 11px;
+    --fs-3: 12px;
+    --fs-4: 9.5px;
+    --fs-5: 9px;
+    --fs-6: 8px;
+    --fs-7: 8px;
+    --fs-8: 7.5px;
+    --text-color: #111;
+    --light-gray: #333;
+    --vegas-gold: #8a6d1d;
+    --orange-yellow-crayola: #b8860b;
+    --background-body: #fff;
+    --background-article: #fff;
+    --background-element: #f3f3f3;
+    --border-color: #ccc;
+    --separator-color: #ddd;
+    --background-icon: #eee;
+    --background-icon-before: #f7f7f7;
+    --icon-color: #444;
+  }
+
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
 
   main {
-    width:95%;
-    margin-inline: auto;
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    gap: 15px;
-  }
-
-  .main-content {
-    width: 70%;
-    min-width: 70%;
+    width: 100%;
+    max-width: none;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 48mm 1fr;
+    gap: 2mm 3mm;
+    align-items: start;
   }
 
-  .service-title, #ytvideo {
-    display: none;
-  }
-
+  .sidebar,
   article {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .container {
-    padding-top: 8mm;
-  }
-
-  .main-content article.resume{
-    page-break-after: always;
-  }
-
-  .main-content article.publications {
-    width: 140% ; /* ensancha */
-    margin-left: -41%;
-    /* margin-top: 100mm; */
-  }
-
-  .main-content article.about {
-      padding-bottom: 0;
-  };
-
-  .article-title {
-    font-size: var(--fs-3);
+    width: auto;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 2.5mm;
+    margin: 0;
+    box-shadow: none;
+    overflow: visible;
   }
 
   /**
-   * SIDEBAR
+   * SIDEBAR (presentation card, no photo)
    */
-
   .sidebar {
-    position: sticky;
-    max-height: max-content;
-    height: 100%;
-    width: 100%;
-    margin-bottom: 0;
-    padding:20px;
-    z-index: 1;
+    position: static;
+    max-height: none;
+    height: auto;
+    display: block !important;
+    grid-column: 1;
+    grid-row: 1;
   }
 
-  .sidebar-info { 
+  .sidebar-info {
     flex-direction: column;
-    gap:15px;
-   }
-
-  .avatar-box img { 
-    width: 100%; 
-    border-radius: 15px;
+    align-items: stretch;
+    gap: 2mm;
   }
 
-  .info-content { 
+  .info-content {
     width: 100%;
   }
 
   .info-content .name {
     width: 100%;
     text-align: center;
-    font-size: var(--fs-2);
+    font-size: 12px;
+    line-height: 1.2;
+    margin-bottom: 2mm;
+    color: #111;
   }
 
-  .info-content .title { 
+  .info-content .title {
     width: 100%;
     text-align: center;
-    font-size: var(--fs-8);
-    padding: 5px 0;
+    font-size: 7.5px;
+    padding: 1.2mm 1.5mm;
+    margin: 0 auto;
+    color: #333;
+    background: #f3f3f3;
+  }
+
+  .sidebar-info_more {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
   }
 
   .separator {
-    margin: 25px 0;
+    margin: 2mm 0;
+    background: #ddd;
+  }
+
+  .contacts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8mm;
   }
 
   .contact-item {
     display: flex;
-    gap: 7px;
+    align-items: center;
+    gap: 1.5mm;
   }
 
   .contact-title {
     display: none;
   }
+
   .contact-info {
     max-width: 100%;
     width: 100%;
   }
 
-  .info_more-btn { display: none; }
-
-  .sidebar-info_more {
-    opacity: 1;
-    visibility: visible;
+  .contact-info :is(.contact-link, time, address) {
+    font-size: 7px;
+    font-weight: 400;
+    color: #222;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    line-height: 1.25;
   }
 
   .icon-box {
-    width: 35px;
-    height: 35px;
-    border-radius: 8px;
-    font-size: 15px;
-  }
-
-  .contacts-list { 
-    grid-template-columns: 1fr; 
-    gap: 15px;
-  }
-
-  .contact-info :is(.contact-link) {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .contact-info :is(.contact-link, time, address) {
-    --fs-7: 12px;
-    font-weight: var(--fw-300);
-  }
-
-  .social-list { justify-content: center; }
-
-  .cv-download {
-    display: none;
-  }
-
-  .sidebar,
-  article {
+    width: 14px;
+    height: 14px;
+    min-width: 14px;
+    border-radius: 3px;
+    font-size: 9px;
     box-shadow: none;
   }
 
+  .social-list {
+    justify-content: center;
+    gap: 2mm;
+  }
+
+  .social-link {
+    color: #333;
+    font-size: 12px;
+  }
+
   /**
-   * PAGE BREAKS
-   * Clone border/background on each printed page fragment so long
-   * sections (e.g. Publications) look like separate panels, not one cut card.
+   * MAIN CONTENT
+   * display:contents lets About sit under the sidebar while
+   * Resume + Publications stack on the right column.
    */
-  .sidebar,
+  .main-content {
+    display: contents;
+  }
+
+  article.about {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  article.resume {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .container {
+    padding: 0;
+    margin: 0;
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  article {
+    display: none;
+  }
+
   article.about,
   article.resume,
   article.publications {
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
+    display: block !important;
   }
 
-  article.about header,
-  article.resume header,
-  article.publications header {
-    break-after: avoid;
-    page-break-after: avoid;
+  .article-title {
+    font-size: 11px;
+    margin-bottom: 1.5mm;
+    padding-bottom: 1mm;
+    color: #111;
+  }
+
+  .article-title::after {
+    width: 12px;
+    height: 1.5px;
+  }
+
+  .about-text {
+    margin: 0;
+  }
+
+  .about-text p {
+    font-size: 8px;
+    line-height: 1.3;
+    margin-bottom: 1.2mm;
+    color: #222;
+  }
+
+  .about-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5 {
+    color: #111;
+  }
+
+  .timeline {
+    margin-bottom: 1.5mm;
+    margin-right: 0;
   }
 
   .timeline .title-wrapper {
-    break-inside: avoid;
-    page-break-inside: avoid;
-    break-after: avoid;
-    page-break-after: avoid;
+    gap: 1.5mm;
+    margin-bottom: 1.2mm;
+  }
+
+  .timeline .title-wrapper .h3 {
+    font-size: 9.5px;
   }
 
   .timeline-year {
-    break-after: avoid;
-    page-break-after: avoid;
+    margin: 0 0 1mm 0;
+    font-size: 8.5px;
+  }
+
+  .timeline-list {
+    margin-left: 3mm;
+    margin-bottom: 1.2mm;
+    font-size: 8px;
   }
 
   .timeline-item {
+    position: relative;
     break-inside: avoid;
     page-break-inside: avoid;
   }
 
-  /**
-  * NAVBAR
-  */
-  .navbar {
+  .timeline-item:not(:last-child) {
+    margin-bottom: 1.2mm;
+  }
+
+  /* Hide decorative timeline line/dots to save space */
+  .timeline-item:not(:last-child)::before,
+  .timeline-item::after {
     display: none;
   }
 
-  article.portfolio, article {
-    display: none;
+  .timeline-item-title {
+    font-size: 8px;
+    line-height: 1.25;
+    margin-bottom: 0.4mm;
   }
 
-  article.about, article.resume, article.publications {
-    display: block;
+  .timeline-list span {
+    font-size: 7.5px;
+    line-height: 1.2;
+  }
+
+  .timeline-text,
+  .timeline-text p {
+    font-size: 7.5px;
+    line-height: 1.25;
+    margin: 0.3mm 0 0;
+    color: #333;
+  }
+
+  .pub-link {
+    color: #111;
+  }
+
+  /* Publications: two columns to fit on one page */
+  article.publications .timeline {
+    column-count: 2;
+    column-gap: 3mm;
+    column-fill: balance;
+  }
+
+  /* Keep section headers / years with the content that follows */
+  article.publications .title-wrapper,
+  article.publications .timeline-year {
+    break-after: avoid;
+    page-break-after: avoid;
+    -webkit-column-break-after: avoid;
+    column-break-after: avoid;
+  }
+
+  /* Allow lists to split across columns (avoids orphan year headings),
+     but keep each publication item intact */
+  article.publications .timeline-list {
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  article.publications .timeline-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    column-break-inside: avoid;
+  }
+
+  /* Keep year heading + first publication as one unbreakable unit */
+  article.publications .pub-keep-together {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    column-break-inside: avoid;
+  }
+
+  article.publications .pub-keep-together .timeline-list {
+    margin-bottom: 0;
+  }
+
+  /* Force single printed page */
+  html,
+  body,
+  main {
+    height: auto;
+    overflow: visible;
   }
 }

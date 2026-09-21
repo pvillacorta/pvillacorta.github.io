@@ -217,9 +217,78 @@ if (currentTheme) { // if a theme is already set in localStorage
 }
 
 // ----------------------- Generate Page PDF ------------------------
+const pubKeepWrappers = [];
+
+function keepYearWithFirstPublication() {
+  // Undo any previous wrap first
+  restorePubYearGroups();
+
+  document.querySelectorAll("article.publications .timeline-year").forEach((year) => {
+    const list = year.nextElementSibling;
+    if (!list || !list.classList.contains("timeline-list")) return;
+
+    const firstItem = list.querySelector(":scope > .timeline-item");
+    if (!firstItem) return;
+
+    const keep = document.createElement("div");
+    keep.className = "pub-keep-together";
+
+    const firstList = document.createElement("ol");
+    firstList.className = "timeline-list";
+
+    year.before(keep);
+    keep.append(year, firstList);
+    firstList.append(firstItem);
+
+    pubKeepWrappers.push({ keep, year, firstList, list, firstItem });
+  });
+}
+
+function restorePubYearGroups() {
+  while (pubKeepWrappers.length) {
+    const { keep, year, list, firstItem } = pubKeepWrappers.pop();
+    if (!keep.parentNode) continue;
+    keep.before(year);
+    if (list.firstChild) {
+      list.insertBefore(firstItem, list.firstChild);
+    } else {
+      list.append(firstItem);
+    }
+    keep.remove();
+  }
+}
+
+function fitPrintToOnePage() {
+  const main = document.querySelector("main");
+  if (!main) return;
+
+  resetPrintFit();
+  keepYearWithFirstPublication();
+  void main.offsetHeight;
+
+  // A4 printable area ≈ 287mm tall with 5mm margins
+  const pageHeightPx = 287 * (96 / 25.4);
+  const contentHeight = main.getBoundingClientRect().height;
+  const scale = Math.min(1, pageHeightPx / contentHeight);
+
+  if (scale < 0.999) {
+    // zoom affects layout (unlike transform), so no blank second page
+    main.style.zoom = String(scale);
+  }
+}
+
+function resetPrintFit() {
+  const main = document.querySelector("main");
+  if (main) main.style.zoom = "";
+  restorePubYearGroups();
+}
+
+window.addEventListener("beforeprint", fitPrintToOnePage);
+window.addEventListener("afterprint", resetPrintFit);
+
 function generatePDF() {
   // Uncomment this whenever the page content changes
   // window.print();
 
-  window.open("files/cv/CV_Pablo_Villacorta_Aylagas.pdf", "_blank");
+  window.open("files/cv/Pablo_Villacorta_CV_1page.pdf", "_blank");
 }
