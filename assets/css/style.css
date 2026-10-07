@@ -844,6 +844,20 @@ main {
   margin-bottom: 25px;
 }
 
+.timeline .title-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.timeline .section-legend {
+  margin: 0;
+  font-size: 12px;
+  font-weight: var(--fw-300);
+  line-height: 1.35;
+  color: var(--light-gray);
+}
+
 .timeline-year { 
   margin-bottom: 30px;
   margin-left: 5px}
@@ -2096,7 +2110,6 @@ input:checked + .slider ion-icon{
   #ytvideo,
   article.portfolio,
   article.contact,
-  .timeline-text-2,
   .ribbon-icon {
     display: none !important;
   }
@@ -2288,8 +2301,43 @@ input:checked + .slider ion-icon{
 
   article.about,
   article.resume,
-  article.publications {
+  article.publications,
+  article.projects {
     display: block !important;
+  }
+
+  /* Projects on a dedicated second page */
+  article.projects {
+    grid-column: 1 / -1;
+    break-before: page;
+    page-break-before: always;
+    padding: 5mm;
+  }
+
+  article.projects .article-title {
+    font-size: 14px;
+    margin-bottom: 3mm;
+  }
+
+  article.projects .timeline .title-wrapper .h3 {
+    font-size: 11px;
+  }
+
+  article.projects .timeline-item:not(:last-child) {
+    margin-bottom: 4mm;
+  }
+
+  article.projects .timeline-item-title,
+  article.projects .h4 {
+    font-size: 9.5px;
+  }
+
+  article.projects .timeline-list span {
+    font-size: 8.5px;
+  }
+
+  article.projects .timeline-text {
+    font-size: 8.5px;
   }
 
   .article-title {
@@ -2341,6 +2389,14 @@ input:checked + .slider ion-icon{
     font-size: 9.5px;
   }
 
+  .timeline .section-legend {
+    font-size: 7.5px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: #444;
+    opacity: 1;
+  }
+
   .timeline-year {
     margin: 0 0 1mm 0;
     font-size: 8.5px;
@@ -2359,7 +2415,7 @@ input:checked + .slider ion-icon{
   }
 
   .timeline-item:not(:last-child) {
-    margin-bottom: 1.2mm;
+    margin-bottom: 2.2mm;
   }
 
   /* Hide decorative timeline line/dots to save space */
@@ -2385,6 +2441,20 @@ input:checked + .slider ion-icon{
     line-height: 1.25;
     margin: 0.3mm 0 0;
     color: #333;
+  }
+
+  .timeline-text-2 {
+    display: block !important;
+    margin-top: 0.4mm;
+    margin-bottom: 1.2mm;
+    font-size: 7px;
+    line-height: 1.2;
+    color: #333;
+  }
+
+  .timeline-text-2 .pub-link {
+    color: #111;
+    text-decoration: underline;
   }
 
   .pub-link {

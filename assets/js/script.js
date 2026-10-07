@@ -115,23 +115,21 @@ sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); }
 
 
 
-// contact form variables
+// contact form variables (legacy; Contact section removed)
 const form = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
 const formBtn = document.querySelector("[data-form-btn]");
 
-// add event to all form input field
-for (let i = 0; i < formInputs.length; i++) {
-  formInputs[i].addEventListener("input", function () {
-
-    // check form validation
-    if (form.checkValidity()) {
-      formBtn.removeAttribute("disabled");
-    } else {
-      formBtn.setAttribute("disabled", "");
-    }
-
-  });
+if (form && formBtn && formInputs.length) {
+  for (let i = 0; i < formInputs.length; i++) {
+    formInputs[i].addEventListener("input", function () {
+      if (form.checkValidity()) {
+        formBtn.removeAttribute("disabled");
+      } else {
+        formBtn.setAttribute("disabled", "");
+      }
+    });
+  }
 }
 
 
@@ -266,20 +264,52 @@ function fitPrintToOnePage() {
   keepYearWithFirstPublication();
   void main.offsetHeight;
 
-  // A4 printable area ≈ 287mm tall with 5mm margins
+  // Scale only the first CV page (sidebar + about + resume + publications).
+  // Projects goes on a separate printed page and must not affect this fit.
+  const page1Els = [
+    document.querySelector(".sidebar"),
+    document.querySelector("article.about"),
+    document.querySelector("article.resume"),
+    document.querySelector(".main-content > .container"),
+  ].filter(Boolean);
+
   const pageHeightPx = 287 * (96 / 25.4);
-  const contentHeight = main.getBoundingClientRect().height;
+  const gapPx = 2 * (96 / 25.4);
+
+  const sidebar = document.querySelector(".sidebar");
+  const about = document.querySelector("article.about");
+  const resume = document.querySelector("article.resume");
+  const pubsWrap = document.querySelector(".main-content > .container");
+
+  const leftH =
+    (sidebar?.getBoundingClientRect().height || 0) +
+    (about?.getBoundingClientRect().height || 0) +
+    gapPx;
+  const rightH =
+    (resume?.getBoundingClientRect().height || 0) +
+    (pubsWrap?.getBoundingClientRect().height || 0) +
+    gapPx;
+
+  const contentHeight = Math.max(leftH, rightH);
   const scale = Math.min(1, pageHeightPx / contentHeight);
 
   if (scale < 0.999) {
-    // zoom affects layout (unlike transform), so no blank second page
-    main.style.zoom = String(scale);
+    page1Els.forEach((el) => {
+      el.style.zoom = String(scale);
+    });
   }
 }
 
 function resetPrintFit() {
-  const main = document.querySelector("main");
-  if (main) main.style.zoom = "";
+  [
+    document.querySelector("main"),
+    document.querySelector(".sidebar"),
+    document.querySelector("article.about"),
+    document.querySelector("article.resume"),
+    document.querySelector(".main-content > .container"),
+  ].forEach((el) => {
+    if (el) el.style.zoom = "";
+  });
   restorePubYearGroups();
 }
 
@@ -290,5 +320,5 @@ function generatePDF() {
   // Uncomment this whenever the page content changes
   // window.print();
 
-  window.open("files/cv/Pablo_Villacorta_CV_1page.pdf", "_blank");
+  window.open("files/cv/Pablo_Villacorta_Aylagas_CV.pdf", "_blank");
 }
