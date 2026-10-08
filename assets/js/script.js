@@ -256,12 +256,39 @@ function restorePubYearGroups() {
   }
 }
 
+const SITE_ORIGIN = "https://pvillacorta.github.io";
+const rewrittenFileLinks = [];
+
+function absolutizeFileLinksForPrint() {
+  restoreFileLinks();
+
+  document.querySelectorAll("a[href]").forEach((anchor) => {
+    const href = anchor.getAttribute("href");
+    if (!href) return;
+
+    // Relative /files/... links become absolute production URLs in the PDF
+    const relativeMatch = href.match(/^(?:\.\/)?(files\/.+)$/);
+    if (!relativeMatch) return;
+
+    rewrittenFileLinks.push({ anchor, href });
+    anchor.setAttribute("href", `${SITE_ORIGIN}/${relativeMatch[1]}`);
+  });
+}
+
+function restoreFileLinks() {
+  while (rewrittenFileLinks.length) {
+    const { anchor, href } = rewrittenFileLinks.pop();
+    anchor.setAttribute("href", href);
+  }
+}
+
 function fitPrintToOnePage() {
   const main = document.querySelector("main");
   if (!main) return;
 
   resetPrintFit();
   keepYearWithFirstPublication();
+  absolutizeFileLinksForPrint();
   void main.offsetHeight;
 
   // Scale only the first CV page (sidebar + about + resume + publications).
@@ -311,6 +338,7 @@ function resetPrintFit() {
     if (el) el.style.zoom = "";
   });
   restorePubYearGroups();
+  restoreFileLinks();
 }
 
 window.addEventListener("beforeprint", fitPrintToOnePage);
