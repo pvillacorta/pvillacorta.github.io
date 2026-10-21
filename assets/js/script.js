@@ -3,13 +3,33 @@
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); };
 
-// sidebar variables
-const sidebar = document.querySelector("[data-sidebar]");
-const sidebarBtn = document.querySelector("[data-sidebar-btn]");
-
-if (sidebar && sidebarBtn) {
+function bindSidebarToggle(sidebar) {
+  const sidebarBtn = sidebar && sidebar.querySelector("[data-sidebar-btn]");
+  if (!sidebarBtn || sidebarBtn.dataset.bound) return;
+  sidebarBtn.dataset.bound = "true";
   sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
 }
+
+// One sidebar markup (sidebar.html) for About, Resume and Research.
+async function mountSharedSidebar() {
+  const slot = document.querySelector("aside.sidebar[data-sidebar]");
+  if (!slot) return;
+  if (slot.childElementCount > 0) {
+    bindSidebarToggle(slot);
+    return;
+  }
+
+  const res = await fetch("/sidebar.html");
+  if (!res.ok) return;
+  const aside = new DOMParser()
+    .parseFromString(await res.text(), "text/html")
+    .querySelector("aside.sidebar");
+  if (!aside) return;
+  slot.replaceWith(aside);
+  bindSidebarToggle(aside);
+}
+
+mountSharedSidebar();
 
 // --------------  Dark mode toggle functionality ---------------------
 const toggleSwitch = document.querySelector('input[type="checkbox"]');

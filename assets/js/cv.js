@@ -12,13 +12,13 @@
   try {
     setStatus("Loading Resume and Research…");
 
-    const [aboutDoc, resumeDoc, researchDoc] = await Promise.all([
-      fetchPage("../index.html"),
+    const [sidebarDoc, resumeDoc, researchDoc] = await Promise.all([
+      fetchPage("/sidebar.html"),
       fetchPage("../resume/"),
       fetchPage("../research/"),
     ]);
 
-    const sidebar = aboutDoc.querySelector("aside.sidebar");
+    const sidebar = sidebarDoc.querySelector("aside.sidebar");
     const resume = resumeDoc.querySelector("article.resume");
     const research = researchDoc.querySelector("article.research");
 
@@ -57,6 +57,7 @@
     content.append(resume, research);
 
     main.replaceChildren(sidebar, content);
+    if (typeof bindSidebarToggle === "function") bindSidebarToggle(sidebar);
 
     setStatus("CV ready. Opening print dialog…");
 
